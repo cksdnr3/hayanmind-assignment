@@ -24,3 +24,4 @@ react-infinite-scroll 라이브러리를 사용한 Infinite Scroll 구현
 
 ----------
 
+<img width="{해상도 비율}" src="https://user-images.githubusercontent.com/70367265/127101908-9ef3b900-25ce-4e6b-89b2-bfaaa1610ba1.gif"/>
