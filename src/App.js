@@ -1,5 +1,5 @@
 import React from 'react';
-import GlobalStyle from './style/style';
+import GlobalStyle from './styles/style';
 import InfiniteScrollList from './components/InfiniteScrollList';
 
 function App() {
