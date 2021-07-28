@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import InfiniteScrollComponent from 'react-infinite-scroll-component';
@@ -8,28 +8,27 @@ import CommentBox from './CommentBox';
 const InfiniteScrollList = () => {
   const [page, setPage] = useState(1);
   const [comments, setComments] = useState([]);
-  const [hasMore] = useState(true);
 
-  const onFetch = useCallback((p) => async () => {
+  const onFetch = async () => {
     try {
-      const res = await axios.get(`${commentsURL}?_page=${p}&_limit=10`);
+      const res = await axios.get(`${commentsURL}?_page=${page}&_limit=10`);
       setComments((prev) => prev.concat(res.data));
       setPage((prev) => prev + 1);
     } catch (err) {
       console.error(err);
     }
-  }, []);
+  };
 
   useEffect(() => {
-    onFetch()(page);
+    onFetch();
   }, []);
   return (
     <>
       <InfiniteScrollStyle
         dataLength={comments?.length}
-        next={onFetch(page)}
+        next={onFetch}
         loader={<></>}
-        hasMore={hasMore}
+        hasMore
         scrollThreshold="1000px"
       >
         {comments?.map((el) => <CommentBox key={el.id} comment={el} />)}
